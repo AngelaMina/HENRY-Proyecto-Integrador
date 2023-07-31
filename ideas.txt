@@ -1,0 +1,99 @@
+
+proyecto integrador mati
+https://terrasafe.streamlit.app/
+
+PAGINA DESCARGA CSV MICROSOFT HISTORICAL ------------------
+
+https://www.kaggle.com/datasets/prasoonkottarathil/microsoft-lifetime-stocks-dataset
+
+
+INFOMACION CHAT GPT SOBRE EL DATAFRAME ------------------
+
+
+Esta información muestra la estructura básica de un DataFrame en pandas que contiene datos de cotizaciones de Microsoft en la bolsa. A continuación, te explico lo que significa cada parte:
+
+Nombre de la clase: <class 'pandas.core.frame.DataFrame'>. Indica que el objeto es un DataFrame de pandas.
+
+RangeIndex: Es un índice que va desde 0 hasta 8524, lo que indica que el DataFrame tiene 8525 filas en total.
+
+Data columns (total 7 columns): Esta sección muestra información sobre las columnas del DataFrame:
+
+Column: Los nombres de las columnas en el DataFrame.
+Non-Null Count: El número de valores no nulos en cada columna. En este caso, todas las columnas tienen 8525 valores no nulos, lo que indica que no hay valores faltantes en el conjunto de datos.
+Dtype: El tipo de datos de cada columna. Aquí, tenemos:
+5 columnas de tipo float64: Open, High, Low, Close, Adj Close. Estas columnas probablemente contienen precios de acciones o datos financieros que son números con decimales.
+1 columna de tipo int64: Volume. Esta columna almacena el volumen de negociación, que es la cantidad de acciones negociadas en un día específico.
+1 columna de tipo object: Date. Esta columna contiene fechas, pero está representada como un objeto en lugar de un tipo de dato datetime. Siempre es recomendable convertir las fechas a un tipo de dato datetime para facilitar su manipulación y análisis.
+memory usage: Indica el uso de memoria del DataFrame, que es de aproximadamente 466.3 KB.
+
+En resumen, el DataFrame contiene información histórica de cotizaciones de Microsoft en la bolsa. Tiene 8525 filas y 7 columnas que representan la fecha, precios de apertura, máximo, mínimo y cierre, el precio ajustado y el volumen de negociación para cada día. Dado que no hay valores faltantes en ninguna columna, los datos parecen estar limpios y listos para su análisis. Sin embargo, si la columna Date no está en formato datetime, es recomendable convertirla para facilitar su manipulación temporal.
+
+FECHA, APERTURA, MAYOR, MENOR, CIERRRE, AJUSTE DE CIERRE, VOLUMEN
+
+consulta chatgpt ------------------------------
+
+---la consulta ------fue Como  calcular indicadores técnicos en pandas-----
+
+En Pandas, puedes calcular indicadores técnicos utilizando las funciones y capacidades de manipulación de datos de la biblioteca. Aquí hay algunos ejemplos de cómo calcular algunos indicadores técnicos comunes utilizando Pandas:
+
+1. Media móvil simple (SMA):
+```python
+import pandas as pd
+
+# Crear una serie de precios
+precios = pd.Series([10, 15, 12, 16, 18, 14, 17, 9, 13, 11])
+
+# Calcular la media móvil simple de 5 períodos
+sma_5 = precios.rolling(window=5).mean()
+print(sma_5)
+```
+
+2. Media móvil exponencial (EMA):
+```python
+import pandas as pd
+
+# Crear una serie de precios
+precios = pd.Series([10, 15, 12, 16, 18, 14, 17, 9, 13, 11])
+
+# Calcular la media móvil exponencial de 5 períodos
+ema_5 = precios.ewm(span=5, adjust=False).mean()
+print(ema_5)
+```
+
+3. RSI (Relative Strength Index):
+```python
+import pandas as pd
+
+# Crear una serie de precios
+precios = pd.Series([10, 15, 12, 16, 18, 14, 17, 9, 13, 11])
+
+# Calcular los cambios de precios
+cambios = precios.diff()
+
+# Calcular el promedio de cambios positivos y negativos
+ganancias = cambios.where(cambios > 0, 0)
+perdidas = cambios.where(cambios < 0, 0)
+promedio_ganancias = ganancias.rolling(window=14).mean()
+promedio_perdidas = perdidas.rolling(window=14).mean()
+
+# Calcular el RSI
+rs = promedio_ganancias / promedio_perdidas.abs()
+rsi = 100 - (100 / (1 + rs))
+print(rsi)
+```
+
+Estos son solo algunos ejemplos básicos. Dependiendo del indicador técnico que desees calcular, los cálculos pueden variar. Pandas ofrece muchas funciones de manipulación de datos y cálculos que puedes utilizar para calcular una amplia variedad de indicadores técnicos.
+
+-----como se podria operar---------------
+https://www.misfinanzasparainvertir.com/como-comparar-los-precios-de-las-acciones/
+
+pg TSLA 
+https://es.investing.com/equities/tesla-motors-cash-flow
+https://zonavalue.com/buscador-de-acciones
+PG MSTF
+https://es.investing.com/equities/microsoft-corp-cash-flow
+https://zonavalue.com/blog/analisis-y-opinion/analisis-microsoft-corporation-msft
+
+
+
+
